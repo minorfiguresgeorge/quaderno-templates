@@ -34,6 +34,8 @@
     .paid {padding:5px 0; border-top:2px solid #666; border-bottom:2px solid #666; font-size:18px; font-weight:bold; text-transform:uppercase}
     #legal {font-size:8pt}
     #legal p {margin:40px 0 20px}
+    #taxText {font-size:8pt}
+    #taxText p {margin:40px 0 20px}
     /* css rules for printing */
     @media print {
       body {-webkit-print-color-adjust:exact}
@@ -154,6 +156,16 @@
         {% if document.legal != blank %}
         <p>{{document.legal | textilize}}</p>
         {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" id="taxText">
+        {% if customer.country == "Austria" or customer.country == "Belgium" or customer.country == "Bulgaria" or customer.country == "Croatia" or customer.country == "Republic of Cyprus" or customer.country == "Czech Republic" or customer.country == "Denmark" or customer.country == "Estonia" or customer.country == "Finland" or customer.country == "France" or customer.country == "Germany" or customer.country == "Greece" or customer.country == "Hungary" or customer.country == "Ireland" or customer.country == "Italy" or customer.country == "Latvia" or customer.country == "Lithuania" or customer.country == "Luxembourg" or customer.country == "Malta" or customer.country == "Netherlands" or customer.country == "Poland" or customer.country == "Portugal" or customer.country == "Romania" or customer.country == "Slovakia" or customer.country == "Slovenia" or customer.country == "Spain" or customer.country == "Sweden" %}
+        <p>This is an EU customer.</p>
+        {% else %}
+        <p>This is a non-EU customer.</p>
+        {% endif %}
+
       </td>
     </tr>
   </table>
